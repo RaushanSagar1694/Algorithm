@@ -17,7 +17,7 @@ public class cycleDetection {
             this.p = p;
         }
     }
-    private boolean isCycle(Pair curr, ArrayList<ArrayList<Integer>> adj, boolean[] vis){
+    private static boolean isCycle(Pair curr, ArrayList<ArrayList<Integer>> adj, boolean[] vis){
         
         Queue<Pair> pq = new LinkedList<>();
         pq.add(curr);
@@ -47,7 +47,7 @@ public class cycleDetection {
         
         return false;
     }
-    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
+    public static boolean Cycle(int V, ArrayList<ArrayList<Integer>> adj) {
         boolean[] vis = new boolean [V];
         
         for(int i = 0; i < V; i++){
@@ -63,7 +63,7 @@ public class cycleDetection {
 
 
 // DFS cycle detection
-private boolean isCycle(int u, ArrayList<ArrayList<Integer>> adj, boolean[] vis, int parent){
+private static boolean isCycle(int u, ArrayList<ArrayList<Integer>> adj, boolean[] vis, int parent){
     vis[u] = true;
     
         
@@ -84,7 +84,7 @@ private boolean isCycle(int u, ArrayList<ArrayList<Integer>> adj, boolean[] vis,
     
     return false;
 }
-public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
+public static boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
     boolean[] vis = new boolean [V];
     
     for(int i = 0; i < V; i++){
@@ -116,6 +116,9 @@ public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
         }
         
         // Add edges to the adjacency list
+
+
+        isCycle(V, adj);
         
     }
 }
