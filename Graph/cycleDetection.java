@@ -1,11 +1,6 @@
-package Graph;
 
 
-
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
+import  java.util.*;
 
 public class cycleDetection {
 
@@ -87,6 +82,60 @@ private static boolean isCycle(int u, ArrayList<ArrayList<Integer>> adj, boolean
     
     return false;
 }
+
+
+
+// Directed Graph DFS cycle detection
+private boolean DFS(int u, HashMap<Integer, List<Integer>> adj, boolean[] vis, boolean[] inRecursive){
+    vis[u] = true;
+    inRecursive[u] = true;
+
+    //DFS
+    if(adj.containsKey(u)){
+
+        for(int v : adj.get(u)){
+
+            if(inRecursive[v] == true){
+                return true;
+            }
+            
+            if(!vis[v] && DFS(v, adj, vis, inRecursive)){
+                return true;
+            }
+        }
+    }
+
+    inRecursive[u] = false;
+    return false;
+}
+public boolean canFinish(int numCourses, int[][] prerequisites) {
+    HashMap<Integer, List<Integer>> adj = new HashMap<>();
+
+    for(int[] k : prerequisites){
+        int u = k[0];
+        int v = k[1];
+
+        if(!adj.containsKey(v)){
+            adj.put(v, new ArrayList<>());
+        }
+
+        adj.get(v).add(u);
+    }
+
+    boolean[] vis = new boolean[numCourses];
+    boolean[] inRecursive = new boolean[numCourses];
+
+    //DFS
+    for(int u = 0; u < numCourses; u++){
+        if(!vis[u] && DFS(u, adj, vis, inRecursive)){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
 public static boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
     boolean[] vis = new boolean [V];
     
@@ -98,9 +147,6 @@ public static boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
     
     return false;
 }
-
-
-
 
 
 
