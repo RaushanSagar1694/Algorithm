@@ -4,10 +4,7 @@ import  java.util.*;
 
  class BipartiteGraph{
 
-
-
     // checking Bipartite Graph in BFS
-    
     public boolean checkBipartiteBFS(int i, HashMap<Integer, List<Integer>> adj, int[] color, int currColor){
         Queue<Integer> pq = new LinkedList<>();
         pq.add(i);
@@ -22,12 +19,13 @@ import  java.util.*;
                 }
 
                 if(color[v] == -1){
+                    
+                    // update color
                     color[v] = 1 - color[u];
                     pq.add(v);
                 }
             }
         }
-        
 
 
         return true;
@@ -61,8 +59,6 @@ import  java.util.*;
 
 
 
-
-
     // checking Bipartite Graph in DFS
 
     public static boolean checkBipartiteDFS(int u, HashMap<Integer, List<Integer>> adj, int[] color, int currColor){
@@ -72,7 +68,7 @@ import  java.util.*;
 
             for(int v : adj.get(u)){
 
-                if(color[v] == currColor) return false;
+                if(color[u] == color[v]) return false;
 
                 if(color[v] == -1){
                     int newColor  = 1 - currColor;
@@ -107,6 +103,7 @@ import  java.util.*;
         
         int[] color = new int[n];
         Arrays.fill(color, -1);
+
 
 
         for(int i = 0; i < n; i++){
