@@ -3,7 +3,7 @@
 
 // Disjoint Set Union
 public class DisjointSetUnion {
-    
+
     //Find
     public static  int find(int x, int[] parent){
         if(x == parent[x]){
@@ -25,7 +25,7 @@ public class DisjointSetUnion {
         if(rank[x_parent] > rank[y_parent]){
             parent[y_parent] = x_parent;
         }
-        else if(rank[y_parent] < rank[x_parent]){
+        else if(rank[x_parent] < rank[y_parent]){
             parent[x_parent] = y_parent;
         }
         else{
