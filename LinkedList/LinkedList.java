@@ -1,4 +1,6 @@
 
+
+
 class LinkedList {
     static class Node{
         int data;
@@ -51,6 +53,21 @@ class LinkedList {
         Tail.next = newNode;
         Tail = newNode;
     }
+
+    //addIndex
+    public static void addAtIndex(int data, int idx){
+        Node newNode = new Node(data);
+
+        if(Head == null){
+            System.out.println("Linked List is Empty");
+        }
+
+        int i = 0;
+        Node temp = Head;
+        while(temp != null && i < idx){
+            
+        }
+    }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
 
@@ -65,7 +82,5 @@ class LinkedList {
         ll.addLast(6);
 
         print();
-
-        System.out.println("Sagar");
     }
 }
